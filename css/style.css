@@ -1,8 +1,5 @@
 /* Hue Under Construction Template */
 /* CosmicLabs http://themeforest.net/user/CosmicLabs */
-
-
-
 /* === GENERAL === */
 *{
 	-webkit-box-sizing: border-box;
@@ -77,6 +74,7 @@ a img {
 /*  --
     top navigation menu styles all pages/sections
 --------------------------------------------------------*/
+
 nav.nav {
 	width: 100%;
 	background:#324259;
@@ -118,8 +116,7 @@ nav.nav:after {
 nav ul {width: 100%;}
 nav ul li {
 	list-style: none;
-	display: inline;
-	width:  14%;
+	display: inline-block;
 	padding: 2px 0;
 	text-align: center;
 	color: white;
@@ -127,6 +124,8 @@ nav ul li {
 nav li a{
     display:inline-block;
     padding:10px;
+    width: 100%;
+    height: 100%;
 
 }
 .hide-on-mobile a {
@@ -148,13 +147,33 @@ nav ul li a:visited {text-decoration: none;color: #ccc;}
 	z-index: 100;
 	border-top: 0;
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #324259;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 13px 16px;
+    z-index: 1;
+    top: 45px;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 /* === Front page SECTION === */
 
 .section-main {
 	width: 100%;
 	color: white;
 	position: relative;
-	z-index: 2000;
 	z-index: 0;
 	display: block;
     height: 1030px;
@@ -172,19 +191,22 @@ h1 {
 	font-family: 'Bellefair', serif;
 	width: 100%;
 	float: right;
-	font-size: 3.6em;
+	font-size: 3.2em;
 	color: #FFF;
 	text-align: right;
 	font-weight: 400;
 	line-height: 125%;
+    letter-spacing: 1px;
 }
 h1:after {
 	text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
 }
 .title h1 span {
-	font-size: 1.5em;
+	font-size: 3em;
 	width: 100%;
 	display: block;
+	line-height: 125%;
+    letter-spacing: 1px;
 }
 .h2.tagline {
 	font-size: 2em;
@@ -200,15 +222,16 @@ h1:after {
 
 .basilandbecky-nobox {
 	background: transparent;
-	margin:174px 1% 0 0;
+	margin: 68px 1% 0 0;
 	padding: 0;
-	width: 57.5%;
+	width: 60.5%;
 	float: right;
 
 }
 /* === General SECTIONs === */
 section  {
 	width: 100%;
+	min-height: 1030px;
 	height: auto;
 	display: block;
 	background-color: white;
@@ -228,35 +251,8 @@ section li {
 	font-size: 1.17em;
 
 }
-.mini-container {
-	width: 80%;
-	max-width: 1000px;
-	margin:40px auto 0;
-	padding: 0px 0 90px 0;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.aboutsection {padding: 20px 0;}
 
-h2.coloured-h2,
-h3.coloured-h2 {
-	font-size: 4.1em;
-    color: #324259 !important;
-	text-transform: uppercase;
-	line-height: normal;
-	text-align: center;
-	font-weight: 400;	
-}
-h2.coloured-h2,
-.vision h3.coloured-h2.vision {
-	margin-top: -15%;
-	padding: .5% 0;
-	padding-top: 25%;
-	margin-bottom: 1%;
-}
-h2.coloured-h2:after,
-.vision h3.coloured-h2.vision:after  {
+section:after {
 	content: "";
     display: table-cell;
 	width: 580px;
@@ -269,16 +265,47 @@ h2.coloured-h2:after,
     border-radius: 50%;
     background-color: rgba(128,197,211,0.35);
     z-index: -10;
+    left: 50%;
+    top: 40px;
 }
-.aboutsection h2.coloured-h2:after {
-	left: 50%;
-	top: 40px;
+section.no-circle:after {
+	    background-color: transparent;
 }
-.vision h3.coloured-h2.vision:after {
-	left: 50%;
-	top: 78%;
+.mini-container {
+	width: 80%;
+	max-width: 1000px;
+	margin:40px auto 0;
+	padding: 0px 0 90px 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
-h3.coloured-h2.who-we-are {    padding-top: 180px;   }
+
+h2.coloured-h2,
+h3.who-we-are {
+	font-size: 4.1em;
+    color: #324259 !important;
+	text-transform: uppercase;
+	line-height: normal;
+	text-align: center;
+	font-weight: 400;	
+	padding: 0;
+	margin: 0;
+}
+
+#home,
+#mission,
+#whoweare,
+#ourvision,
+#ourfilms,
+#besupport,
+#events,
+#contact {
+	padding-top: 140px; margin-top: -140px;
+}
+
+h3.coloured-h2.who-we-are {  padding-bottom: 40px;   }
+
 /*  --
     staff box styles about section 
 --------------------------------------------------------*/
@@ -347,7 +374,7 @@ h3.coloured-h2.who-we-are {    padding-top: 180px;   }
     background-color: rgba(128,197,211,0.35);
      
 }
-.aboutsection h4.bio {
+.aboutsection .about-circle h4.bio {
     font-size: 1.5em !important;
     text-align: left;
 	margin: 0px;
@@ -440,23 +467,8 @@ h3.coloured-h2.who-we-are {    padding-top: 180px;   }
 /* END ALL MISSION/ABOUT SECTION */
 
 /* BEGIN FILM SECTION */
-.filmsection {
-	margin-top: -170px;
-}
- .filmsection h2.coloured-h2,
- .supportsection h2.coloured-h2,
- .eventsection h2.coloured-h2,
- .contactsection h2.coloured-h2 {
-	margin-top: -5%;
-	padding: .5% 0;
- 	padding-top: 13%;
-	margin-bottom: 1%;
-}
- .filmsection h2.coloured-h2:after {
- 	left: 50%;
- 	top:16px;
- }
- .filmsection h4 {
+ 
+.filmsection h4 {
  	text-align: center;
     text-transform: uppercase;
     color: #2b2f3e;
@@ -478,7 +490,7 @@ h3.coloured-h2.who-we-are {    padding-top: 180px;   }
 	width: 500px;
 }
 .video-description {
-	
+	max-width: 500px;
 	width: auto;
 	margin: 0 1%;
 }
@@ -491,55 +503,38 @@ h3.coloured-h2.who-we-are {    padding-top: 180px;   }
     donate/support styles about section 
 --------------------------------------------------------*/
 
-.supportsection h2.coloured-h2:after {
-	left: 50%;
-	top: 14px;
-}
-.supportsection article{
-	width: 66%;
-	float:left;
-}
 .supportsection iframe {
 	width:500px;
 	max-width:100%;
 }
-.supportsection aside.background-color {
-	background: #ff8b00;
-	width: 31%;
-	padding: 10px;
-	text-align:center;
-	height: 100%;
-	border: 1px solid #eee;
-	float: right;
-	margin-top: 21px;
- } 
+
 .supportsection .support-image {
         width: 50%;
         display: block;
         margin: 0 auto;
 }
 div.paypal-wrapper input[type="submit"] {
-         position: relative;
-         display: block;
-         margin : 4% auto;
-    }
+     position: relative;
+     display: block;
+     margin : 4% auto;
+}
  
  
  
 /* EVENT Section _______________________
 */
 
-.eventsection h2.coloured-h2:after {
-	left: 50%;
-	top: 14px;
-}
+
 .event-details, 
 .event-details p {
 	text-align: center !important;
 }
 .event-details h3, 
 .event-details h6 {color: red;font-size: 2.1em;line-height: 125%;}
-.event-details h4 {font-size: 1.46em;}
+.event-details h4 {
+	font-size: 1.66em;
+    color: black;
+}
 .event-details h5 {margin:0 auto 20px auto;}
 .event-details h6 {margin:0;color:#30415A; font-size: 1.17em}
 .event-details a:hover {
@@ -549,7 +544,7 @@ div.paypal-wrapper input[type="submit"] {
 
 
 /* === EMAIL-SUBSCRIBE === */
-
+/*
 .section.subscribesection {
 	background-color: transparent;
 	line-height: 28px;
@@ -725,13 +720,13 @@ div.paypal-wrapper input[type="submit"] {
 .signup-button.signup-button-success {
 	background-color: white;
 	color: transparent !important;
-}
+}*/
 
 /* === CONTACT === */
-.contactsection h2.coloured-h2:after {
+/*.contactsection h2.coloured-h2:after {
 	left: 50%;
 	top: 14px;
-}
+}*/
 .contact-box-container {
 	width: 100%;
 	display: table;
@@ -766,7 +761,6 @@ div.paypal-wrapper input[type="submit"] {
 }
 
 .contact-box.right {
-	/*position: relative;*/
 	margin-bottom: 0px;
 }
 
@@ -1008,7 +1002,7 @@ div.paypal-wrapper input[type="submit"] {
 	width: 2.5%;
 }
 
-.section.footersection a {
+.footersection a {
 	color: white;
 	text-decoration: none;
 	transition: all 0.5s ease;
@@ -1018,15 +1012,15 @@ div.paypal-wrapper input[type="submit"] {
 	border-bottom: 1px solid rgba(255,255,255,0);
 }
 
-.section.footersection a.footer-img {
+.footersection a.footer-img {
 	border: none !important;
 }
 
-.section.footersection a:hover {
+.footersection a:hover {
 	border-bottom: 1px solid rgba(255,255,255,0.5);
 }
 
-.section.footersection a.footer-social {
+.footersection a.footer-social {
 	display: inline-block;
 	margin-right: 15px;
 	padding: 10px;
@@ -1043,7 +1037,7 @@ div.paypal-wrapper input[type="submit"] {
 	-o-transition: all 0.5s ease;
 }
 
-.section.footersection a.footer-social:hover {
+.footersection a.footer-social:hover {
 	background-color: rgba(255,255,255,1);
 }
 
@@ -1103,14 +1097,8 @@ div.paypal-wrapper input[type="submit"] {
 	}
 }
 @media all and (max-width: 1024px) {
-	.section-main {height: 1190px;}
-}
-@media all and (max-width: 989px) {
-	#countdown .countdown-elem h2 {
-		font-size: 32px;
-	}
-	
-	#countdown .countdown-elem span {
+	.section-main {
+		height: 1190px;
 	}
 }
 
@@ -1126,12 +1114,8 @@ div.paypal-wrapper input[type="submit"] {
 }
 
 @media all and (max-width: 599px) {
-	.section {
-		padding-top: 60px;
-		padding-bottom: 60px;
-	}
 	
-	h2.light-h2, h2.coloured-h2 {
+	h2.coloured-h2 {
 		margin-bottom: 40px;
 	}
 	
@@ -1146,7 +1130,7 @@ div.paypal-wrapper input[type="submit"] {
 		margin-bottom: 40px;
 	}
 	
-	.subscribe {
+	/*.subscribe {
 		height: 130px;
 	}
 	
@@ -1185,29 +1169,8 @@ div.paypal-wrapper input[type="submit"] {
 	
 	#countdown .countdown-spacer.central-spacer {
 		display: none;
-	}
+	}*/
 	
-	.aboutsection .about-container {
-		display: block;
-	}
-		
-	.aboutsection .about-container .about-box {
-		width: 100%;
-		display: block;
-		margin-bottom: 80px;
-	}
-	
-	.aboutsection .about-container .about-box:last-child {
-		margin-bottom: 0px !important;
-	}
-	
-	.aboutsection .about-container .about-box-spacer {
-		width: 0%;
-	}
-	
-	.aboutsection .about-container .about-box span.bio-img {
-		font-size: 82px;
-	}
 	
 	.contact-box.left ul li {
 		font-size: 18px;
@@ -1283,7 +1246,7 @@ input.paypal-image  {
     width: 50%;
     cursor:pointer;
 }*/
-.section.footersection .mini-container .footer-container {position: inherit;}
+
 /*  --
    other styles all pages/sections
 --------------------------------------------------------*/
@@ -1311,12 +1274,11 @@ figure img {
 	height: auto;
 	display: block;
 	margin: 5% auto;
-/*	background: 1px solid #ccc;
-*/	border:  1px solid #ccc;
+ 	border:  1px solid #ccc;
 }
 
 /* The Modal (background) */
-.section .modal {
+.modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 20000; /* Sit on top */
@@ -1452,8 +1414,38 @@ ________________________________________________________________________________
 */
 @media (max-width: 1024px) {
 	.aboutsection .about-container .about-circle img.bio-img {float: none;clear: both;}
+	.vision h3.coloured-h2.vision::after {
+	    top: 79%;
+	}
+	.contact-box-container {
+	    margin-top: 10px;
+	}
+	section {min-height: 1024px;}
+}
+
+/*@media only screen and (max-width: 940px) {
+	
+}*/
+@media only screen and (max-width: 940px) {
+	.title,
+	.basilandbecky-nobox {
+		left:0;
+		top: 1.5%;
+    	width: 97%;
+    }
+    h1 {
+		font-size: 4.7em;
+	}
+	.title h1 span {
+		font-size: 1.61em;
+	}
+	ul.hide-on-mobile {padding: 0;}
 }
 @media only screen and (max-width: 840px) {
+	.title {top: 1.5%;}
+	.basilandbecky-nobox {
+		margin: 370px 0 0 0;
+	}
 	.about-box-text h3 {padding-top: 8px;}
 
 	.about-box-text h3,
@@ -1471,43 +1463,68 @@ ________________________________________________________________________________
 	.video-description {
 		margin:0 1%;
 	}
-	.section.supportsection.countdownsection article{
-		width: 100%;
-		float:none;
-	}
-	.supportsection aside.background-color {
-		margin:auto;
-		float:none;
-		width: 50%; 
-	}
 }
-@media screen and (max-width: 769px) {
-	.mini-container.main-mini-container {width: 90%; margin: auto;float:none;clear:both;}
+@media screen and (max-width: 834px) {
+	.mini-container.main-mini-container,
+	.mini-container {width: 90%; margin: auto;float:none;clear:both;}
 	
-	.title {left:0;}
-
+	
+    h2.coloured-h2, h3.who-we-are {
+	    font-size: 3.41em;
+	}
 	.myButton, .contact-box.right input[type="submit"] {
 		display:block;
 		margin:auto;
 	}
-	.mini-container {
-		padding: 40px 0 151px 0;
-	}
-	h2.coloured-h2.vision:after {
-		left: 51.4%;
+	.white-padding {
+		height: 120px;
+		background: white;
+		margin: 0;
 	}
 	.fadeBox ul li {
 		font-size: 1.2em;
 	}
+	section::after {
+	    width: 480px;
+    	height: 480px;
+    	top: 29px;
+	}
+	#home,
+	#mission,
+	#whoweare,
+	#ourvision,
+	#ourfilms,
+	#besupport,
+	#events,
+	#contact {
+		padding-top: 255px; 
+  		display: inline-block;
+	}
+	.video-flex-container {
+   		justify-content: center;
+	}
+	.video {
+		text-align: center;
+	}
+	.event-details h3 {
+	    font-size: 2em;
+	}
+	.event-details h4 {
+		color:;
+	}
+	.contact-box.left ul li {
+		padding-left: 0;
+	}
+
 }
 
-@media screen and (max-width: 736px) {
-	body {
+@media screen and (max-width: 834px) {
+	/*body {
 		overflow-x: hidden;
-	}
+	}*/
 	.hide-on-mobile{display: none;}
 	.mobile {display: block;}  
-	.mobile-logo {width: 12%;float:left; margin-left: 2%;}
+	.mobile-logo {width: 12%;float:left; margin-left: 2%;margin-top: -4px}
 	.mobile li {
 		display: inline-block;
 		width: 100%;
@@ -1677,15 +1694,17 @@ ________________________________________________________________________________
         height: 0;
         width: 100%;
         padding-top: 60px;
+        padding-bottom: 20px;
         -webkit-transition: height .5s ease;
         -webkit-transition-delay: .4s;
+
     }
     #mobile .content li{ 
     	display: inline-block;
     	width: 100%;
     }
     #mobile .content.focus {
-        height:320px;
+        height:400px;
         z-index: 3;
         -webkit-transition-delay: 0s;
     }
@@ -1708,24 +1727,26 @@ ________________________________________________________________________________
         background: #eee;
         color: #333;
     }
-    #mobile .content li:nth-child(1) {
-    	background: transparent;
-    }
+    
     #mobile .content li.close { 
     	text-align: right;
     	padding-left: 0;
     	width: 90%;
     }
-    #mobile .content li {
+    #mobile .content li,
+     #mobile .content li.dropdown a:link{
         list-style: none;
         text-align: left;
         color: #888;
-        font-size: 14px;
-        line-height: 30px;
-        height: 30px;
-        padding: 10px;
-        border-top: 1px solid #ccc;
-    }
+        font-size: 16px;
+        padding: 15px 10px;
+	 }
+	 #mobile .content li.dropdown a:link{ 
+	 	margin: 4px 0; 
+	 	padding:0;
+	 	width: 100%;
+	 	height: 100%;
+	 }
      #mobile .content li:nth-child(1),
       #mobile .content li:nth-child(2) {
      	border-top: none;
@@ -1734,9 +1755,32 @@ ________________________________________________________________________________
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
     }
-}
-/*End Mobile menu*/
 
+	#mobile .content .dropdown .dropdown-content {
+		height: 300px;
+	    display: none;
+	    position: absolute;
+	    color: rgba(102,102,102,0.6);
+	    background-color: #324259;
+	    min-width: 160px;
+	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	    padding: 13px 16px;
+	    z-index: 1;
+	    top: 45px;
+	    left: 60px;
+		width: 160px;
+	}
+
+	#mobile .content .dropdown:hover .dropdown-content {
+	    display: block;
+	}
+	 
+}
+@media only screen and (max-width: 768px) {
+	.basilandbecky-nobox {
+	    margin: 280px 0 0 0;
+	}
+}
 @media (max-width: 667px) {
 	.mobile-logo {
 		width: 90px;
@@ -1747,12 +1791,15 @@ ________________________________________________________________________________
 	    float: none;
     	margin: auto;
 	}
+	.title {
+		top: 11.5%;
+	}
 }
 @media only screen and (max-width: 580px) {
 	.fadeBox ul li {
 	    font-size: 1.4em;
 	}
-	.aboutsection .about-container .about-circle, .section.subscribesection .about-container .about-box {
+	.aboutsection .about-container .about-circle {
 	    width: 98%;
 	    display: block;
 	}
@@ -1773,37 +1820,68 @@ ________________________________________________________________________________
 		width: 400px;
 	}
 }
-@media screen and (max-width: 414px) { 
+@media screen and (max-width: 414px) {
+	.title h1 span {
+		font-size: 1.8em; 
+		letter-spacing: 0;
+	} 
+	.h2.tagline {
+	    font-size: 1.6em;
+	}
+	.basilandbecky-nobox {
+    	top: 0;
+    	margin: 220px 1% 0 1%;
+	}
+	
 	.mission {margin:0 auto;padding-bottom: 20px;margin-bottom: 20px;}
 	.mission h4 span {font-size: 22px;}
-	.section h2 {font-size: 3em;}
-	.about-box-text h3 {padding-top: 20px;}
-	.aboutsection .about-container .about-circle img.bio-img {float:none;}
-	.about-image,
-	iframe,
-	.aboutsection .about-container .about-circle  {display:block;width: 100%;float:none;}
-	
-	h2.coloured-h2.vision::after { 
-		margin-top: -60%;
-		width: 580px;
-		height: 580px;
+	h2 {font-size: 3em;}
+	.white-padding {
+		display: none;
 	}
-	.fadeBox ul li {font-size: 16px;height:100%;}
-	.supportsection aside.background-color {width: 100%;}
+	section::after {
+	    width: 380px;
+	    height: 380px;
+	    top: 20px;
+	}
+	.mini-container {
+		padding: 90px 0;
+	}
+	#home,
 	#mission,
-	#besupport,
+	#whoweare,
+	#ourvision,
 	#ourfilms,
+	#besupport,
+	#events,
 	#contact {
-	  display: block; 
-	  content: " "; 
-	  margin-top: -85px; 
-	  height: 85px; 
+	    padding-top: 140px;
+	    margin-top: -140px;
 	}
-	.vision-box {
-	    font-size: 14px;
+	.film-container {
+	    margin-top: 10px;
+	}
+	.image-container, 
+	.video-container,
+	.video-container video,
+	.video iframe {
+	    width: 100%;
+	}
+	.event-details p {
+		font-size: 1em;
+	}
+	.support-image p {
+		font-size: 12px;
 	}
 }
-
+@media all and (max-width: 375px) {
+	.title {top: 9.5%;}
+	.title h1 {font-size: 30px;}
+	 h2.coloured-h2, h3.who-we-are {
+	    font-size: 3.1em;
+	}
+	.basilandbecky-nobox {margin: 200px 0 1%;}
+}
 @media all and (max-width: 360px) {
 	.section-main {
 		height: 1410px;
